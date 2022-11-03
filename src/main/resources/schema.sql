@@ -1,0 +1,1 @@
+create table availability(id serial primary key, name varchar(255) not null, available BOOL not null)
