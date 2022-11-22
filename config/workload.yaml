@@ -1,0 +1,18 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: availability
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: availability
+spec:  
+  serviceClaims:
+    - name: db
+      ref:
+        apiVersion: with.sql.tanzu.vmware.com/v1
+        kind: MySQL
+        name: availability-mysql
+  build:
+    env:
+    - name: BP_JVM_VERSION
+      value: "17.*"
